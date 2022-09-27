@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, tr, td{
+            border: 1px solid rgb(251, 197, 152)
+        }
+    </style>
+</head>
+<body>
+    <table>
+    <h1>this is student info</h1>
+    <th>Name</th>
+    <th>Fathers name</th>
+    <th>Roll number</th>
+    <th>Marks</th>
+
+    {% for student in students %}
+    <tr>
+      <td>{{student.name}}</td>
+      <td>{{student.f_name}}</td>
+      <td>{{student.roll_no}}</td>
+      <td>{{student.marks}}</td>
+    </tr>  
+    {% endfor %} 
+    </table><hr>
+   
+    <h3>average {{average.marks__avg}}</h3></hr>
+    <h3>addition {{addition.marks__sum}}</h3></hr>
+    <h3>minimum {{minimum.marks__min}}</h3></hr>
+    <h3>maximum {{maximum.marks__max}}</h3></hr>
+    <h3>tatalcount{{totalcount.marks__count}}</h3></hr>
+    
+
+
+
+  
+
+</body>
+</html>
