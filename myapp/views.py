@@ -5,7 +5,7 @@ from datetime import date , time
 from django.db.models import Avg, Sum, Min, Max, Count
 
 def orm(request):
-    # student_data = Student.objects.all()
+    student_data = Student.objects.all()
 
     #student_data = Student.objects.exclude(marks=70)
 
@@ -81,6 +81,44 @@ def orm(request):
    totalcount = student_data.aggregate(Count('marks'))
    context = {'student':student_data,'average':average, 'addition': addition,
    'minimum':minimum, 'maximum':maximum, 'totalcount':totalcount }
+    ######################################################################QUERY SET NOT RETUR NEW QUERY SET
+#     student_data = Student.objects.filter(id=5).update(name='kabir', marks=95) -> update is not work with get method and change multiple data also
+#     student_data,created = Student.objects.get_or_create(name='asima',f_name='jalaluddin', marks=50)
+#     create()-> for createing data
+#     get(pk=2)-> give single data not multiple thats why give pk.
+#     first()-> show first data of the ra
+#     last()
+#     erliest()
+#     newest()
+#     update_or_create(defaults = None, **kwargs)
+#     student_data,created = Student.objects.update_or_create(id=4,name='asima',f_name='jalaluddin', marks=50,defaults={'name':'Kohli')
+#     print(created) -> if not  created to it will created. then update
+    
+#     bulk_create(obj, batch_size=None, ignore_conflicts=False)
+#     here we can create date in bulk and then put it into data base.
+#     objs=[student(name='asima',f_name='jalaluddin', marks=50),
+#           student(name='asima',f_name='jalaluddin', marks=50),
+#           student(name='asima',f_name='jalaluddin', marks=50),
+#          ]
+#     student_data= student.objects.bulk_create(objs)
+#     bulk_update(objs,fields, batch_size= none) 
+#     all_student_data =Student.objects.all()
+#     for stu in all_student_data:
+#          stu.city='Dhanbad'                                                                                                             
+#     student_data = Student.objects.bulk_data(all_student_data,['city'])
+#     in_bulk(id_list = None, field_name='pk')                                                                                                                  
+    
+#      student_data = Student.objects.in_bulk([1,2]) it will show the data in 1,2, row
+                                                                                                                      
+#     delete() -> it delete one or multiple record 
+#     for one student_data = Student.objects.get(pk = 22)                                                                                                                  
+#     deleted =  student_data.delete()                                                                                                                  
+    
+#     in bulk => student_data = Student.objects.filter(marks = 50).delete()
+#                 student_data = Student.objects.all().delete()                                                                                                      
+    
+#     count()=> student_data = Student.objects.all() givw the no. of data in table
+#               print(student_data.count())                                                                                                        
 #    print(avg)
 #    print('Return:', student_data)
 #    print('SQL Query:', student_data.Query)
